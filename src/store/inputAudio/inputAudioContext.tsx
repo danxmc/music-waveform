@@ -1,16 +1,21 @@
 import React, { createContext, useReducer, useMemo } from "react";
 import { initialInputAudioState, inputAudioReducer } from "./inputAudioReducer";
-import { InputAudioProviderProps, InputAudioStateContextValue } from "./inputAudio";
+import {
+  InputAudioProviderProps,
+  InputAudioStateContextValue,
+} from "./inputAudio";
 
 export const InputAudioContext = createContext<InputAudioStateContextValue>({
   inputAudioState: initialInputAudioState,
   dispatchInputAudioState: () => {},
 });
 
-export const InputAudioProvider = (props: InputAudioProviderProps): JSX.Element => {
+export const InputAudioProvider = (
+  props: InputAudioProviderProps,
+): JSX.Element => {
   const [inputAudioState, dispatchInputAudioState] = useReducer(
     inputAudioReducer,
-    initialInputAudioState
+    initialInputAudioState,
   );
 
   const value = useMemo(() => {
@@ -30,7 +35,9 @@ export const InputAudioProvider = (props: InputAudioProviderProps): JSX.Element 
 export const useInputAudioState = (): InputAudioStateContextValue => {
   const context = React.useContext(InputAudioContext);
   if (!context) {
-    throw new Error("usePlaceState must be used within a inputAudioContextProvider");
+    throw new Error(
+      "usePlaceState must be used within a inputAudioContextProvider",
+    );
   }
   return context;
 };

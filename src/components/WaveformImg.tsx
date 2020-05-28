@@ -1,7 +1,7 @@
-import React, { useRef, useEffect } from 'react'
-import WaveformData from 'waveform-data';
+import React, { useRef, useEffect } from "react";
+import WaveformData from "waveform-data";
 
-function WaveformImg(props: { waveformData: WaveformData; }) {
+function WaveformImg(props: { waveformData: WaveformData }) {
   const refWaveformCanvas = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -10,7 +10,7 @@ function WaveformImg(props: { waveformData: WaveformData; }) {
       const offset = 128;
 
       return height - ((amplitude + offset) * height) / range;
-    }
+    };
 
     const canvas = refWaveformCanvas.current!;
     if (canvas) {
@@ -37,12 +37,9 @@ function WaveformImg(props: { waveformData: WaveformData; }) {
       ctx?.stroke();
       ctx?.fill();
     }
-
   }, [props.waveformData]);
 
-  return (
-    <canvas ref={refWaveformCanvas}></canvas>
-  )
+  return <canvas ref={refWaveformCanvas}></canvas>;
 }
 
-export default WaveformImg
+export default WaveformImg;
