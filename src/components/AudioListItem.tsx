@@ -1,13 +1,20 @@
-import React, { useState } from 'react'
-import { Card, CardContent, makeStyles, Typography, CardActions, Button } from '@material-ui/core';
-import { createWaveformData, getArrayBufferFromFile } from '../utilities';
-import WaveformData from 'waveform-data';
-import WaveformImg from './WaveformImg';
+import React, { useState } from "react";
+import {
+  Card,
+  CardContent,
+  makeStyles,
+  Typography,
+  CardActions,
+  Button,
+} from "@material-ui/core";
+import { createWaveformData, getArrayBufferFromFile } from "../utilities";
+import WaveformData from "waveform-data";
+import WaveformImg from "./WaveformImg";
 
 const useStyles = makeStyles({
   title: {
     fontSize: 16,
-  }
+  },
 });
 
 function AudioListItem(props: { song: File }) {
@@ -24,7 +31,7 @@ function AudioListItem(props: { song: File }) {
 
     // Set state
     setWaveformData(audioWaveformData);
-  }
+  };
 
   return (
     <Card variant="outlined">
@@ -32,16 +39,15 @@ function AudioListItem(props: { song: File }) {
         <Typography className={classes.title} color="textPrimary">
           {props.song.name}
         </Typography>
-        {waveformData ? <WaveformImg waveformData={waveformData}/>: null}
+        {waveformData ? <WaveformImg waveformData={waveformData} /> : null}
       </CardContent>
       <CardActions>
-        <Button
-          size="small"
-          onClick={handleGetWaveformData}
-        >Get Waveform Data</Button>
+        <Button size="small" onClick={handleGetWaveformData}>
+          Get Waveform Data
+        </Button>
       </CardActions>
     </Card>
-  )
+  );
 }
 
-export default AudioListItem
+export default AudioListItem;

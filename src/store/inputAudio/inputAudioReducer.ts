@@ -7,7 +7,7 @@ export const initialInputAudioState: InputAudioState = {
 
 export const inputAudioReducer = (
   state: InputAudioState = initialInputAudioState,
-  action: InputAudioReducerAction
+  action: InputAudioReducerAction,
 ): InputAudioState => {
   switch (action.type) {
     case "SET_SONGS":

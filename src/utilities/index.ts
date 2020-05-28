@@ -1,10 +1,12 @@
-import WaveformData from 'waveform-data';
+import WaveformData from "waveform-data";
 
 function arrayFromFileList(list: FileList) {
   return Array.from(list);
 }
 
-async function createWaveformData(arrayBuffer: ArrayBuffer): Promise<WaveformData> {
+async function createWaveformData(
+  arrayBuffer: ArrayBuffer,
+): Promise<WaveformData> {
   let waveformData = new Promise<WaveformData>((resolve) => {
     resolve({} as WaveformData);
   });
