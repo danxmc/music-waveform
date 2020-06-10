@@ -20,7 +20,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
-    "lint": "eslint --quiet --fix src/**/*.{js,jsx,ts,tsx}"
+    "lint": "eslint --quiet --fix src/**/*.{js,jsx,ts,tsx}",
+    "docker-build": "docker build -t music-waveform-web .",
+    "docker-run": "docker run -it -p 3000:3000 music-waveform-web"
   },
   "eslintConfig": {
     "extends": "react-app"
