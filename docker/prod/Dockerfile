@@ -14,7 +14,7 @@ COPY package.json yarn.lock ./
 # Installs all node packages
 RUN yarn install
 
-#ENV PATH="./node_modules/.bin:$PATH"
+ENV PATH="./node_modules/.bin:$PATH"
  
 # Copies everything over to Docker environment
 COPY . .
