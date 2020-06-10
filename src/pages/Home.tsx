@@ -6,10 +6,10 @@ import AudioList from "../components/AudioList";
 function Home() {
   return (
     <Grid container spacing={3}>
-      <Grid item xs={6}>
+      <Grid item xs={12}>
         <Typography variant="h4">Waveform Audio Viewer</Typography>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12}>
         <AudioInputForm />
       </Grid>
 
