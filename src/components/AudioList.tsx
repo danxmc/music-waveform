@@ -1,8 +1,8 @@
-import React, { Fragment } from "react";
-import { useInputAudioState } from "../store/inputAudio/inputAudioContext";
-import { arrayFromFileList } from "../utilities";
-import { Typography } from "@material-ui/core";
-import AudioListItem from "./AudioListItem";
+import React, { Fragment } from 'react';
+import { useInputAudioState } from '../store/inputAudio/inputAudioContext';
+import { arrayFromFileList } from '../utilities';
+import { Typography } from '@material-ui/core';
+import AudioListItem from './AudioListItem';
 
 function AudioList() {
   // Global State
@@ -10,7 +10,7 @@ function AudioList() {
 
   return (
     <Fragment>
-      <Typography variant="h6">Audio List</Typography>
+      <Typography variant='h6'>Audio List</Typography>
       <div>
         {arrayFromFileList(inputAudioState.songs).map((song, index) => {
           return (

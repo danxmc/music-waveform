@@ -1,4 +1,4 @@
-import WaveformData from "waveform-data";
+import WaveformData from 'waveform-data';
 
 function arrayFromFileList(list: FileList) {
   return Array.from(list);
@@ -46,16 +46,16 @@ async function getArrayBufferFromFile(file: File): Promise<ArrayBuffer> {
       };
 
       reader.onabort = () => {
-        console.log("Aborted");
+        console.log('Aborted');
       };
       reader.onloadstart = () => {
-        console.log("Load Start");
+        console.log('Load Start');
       };
       reader.onload = () => {
-        console.log("Loaded");
+        console.log('Loaded');
       };
       reader.onloadend = () => {
-        console.log("Load End", reader.result);
+        console.log('Load End', reader.result);
         resolve(reader.result as ArrayBuffer);
       };
 

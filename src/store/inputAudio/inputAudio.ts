@@ -1,4 +1,4 @@
-type Actions = "SET_SONGS" | "SET_WAVEFORM_DATA" | "RESET_STATE";
+type Actions = 'SET_SONGS' | 'SET_WAVEFORM_DATA' | 'RESET_STATE';
 
 export interface InputAudioState {
   songs: FileList;

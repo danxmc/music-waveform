@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Card,
   CardContent,
@@ -6,10 +6,10 @@ import {
   Typography,
   CardActions,
   Button,
-} from "@material-ui/core";
-import { createWaveformData, getArrayBufferFromFile } from "../utilities";
-import WaveformData from "waveform-data";
-import WaveformImg from "./WaveformImg";
+} from '@material-ui/core';
+import { createWaveformData, getArrayBufferFromFile } from '../utilities';
+import WaveformData from 'waveform-data';
+import WaveformImg from './WaveformImg';
 
 const useStyles = makeStyles({
   title: {
@@ -34,15 +34,15 @@ function AudioListItem(props: { song: File }) {
   };
 
   return (
-    <Card variant="outlined">
+    <Card variant='outlined'>
       <CardContent>
-        <Typography className={classes.title} color="textPrimary">
+        <Typography className={classes.title} color='textPrimary'>
           {props.song.name}
         </Typography>
         {waveformData ? <WaveformImg waveformData={waveformData} /> : null}
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={handleGetWaveformData}>
+        <Button size='small' onClick={handleGetWaveformData}>
           Get Waveform Data
         </Button>
       </CardActions>

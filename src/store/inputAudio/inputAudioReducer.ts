@@ -1,8 +1,8 @@
-import { InputAudioState, InputAudioReducerAction } from "./inputAudio";
+import { InputAudioState, InputAudioReducerAction } from './inputAudio';
 
 export const initialInputAudioState: InputAudioState = {
   songs: {} as FileList,
-  waveformData: "",
+  waveformData: '',
 };
 
 export const inputAudioReducer = (
@@ -10,17 +10,17 @@ export const inputAudioReducer = (
   action: InputAudioReducerAction,
 ): InputAudioState => {
   switch (action.type) {
-    case "SET_SONGS":
+    case 'SET_SONGS':
       return {
         ...state,
         songs: action.payload,
       };
-    case "SET_WAVEFORM_DATA":
+    case 'SET_WAVEFORM_DATA':
       return {
         ...state,
         waveformData: action.payload,
       };
-    case "RESET_STATE":
+    case 'RESET_STATE':
       return {
         ...initialInputAudioState,
       };

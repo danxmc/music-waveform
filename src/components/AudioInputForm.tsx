@@ -1,11 +1,11 @@
-import React, { Fragment } from "react";
-import { Button, makeStyles } from "@material-ui/core";
-import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-import { useInputAudioState } from "../store/inputAudio/inputAudioContext";
+import React, { Fragment } from 'react';
+import { Button, makeStyles } from '@material-ui/core';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import { useInputAudioState } from '../store/inputAudio/inputAudioContext';
 
 const useStyles = makeStyles(() => ({
   input: {
-    display: "none",
+    display: 'none',
   },
 }));
 
@@ -19,7 +19,7 @@ function AudioInputForm() {
     event: React.ChangeEvent<HTMLInputElement>,
   ): void => {
     dispatchInputAudioState({
-      type: "SET_SONGS",
+      type: 'SET_SONGS',
       payload: event.target.files,
     });
   };
@@ -27,18 +27,18 @@ function AudioInputForm() {
   return (
     <Fragment>
       <input
-        accept="audio/*"
+        accept='audio/*'
         className={classes.input}
-        id="contained-button-file"
+        id='contained-button-file'
         multiple
-        type="file"
+        type='file'
         onChange={handleInputAudioFileChange}
       />
-      <label htmlFor="contained-button-file">
+      <label htmlFor='contained-button-file'>
         <Button
-          variant="contained"
-          color="primary"
-          component="span"
+          variant='contained'
+          color='primary'
+          component='span'
           startIcon={<CloudUploadIcon />}
         >
           Upload Audio

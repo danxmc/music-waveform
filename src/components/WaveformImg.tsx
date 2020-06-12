@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from "react";
-import WaveformData from "waveform-data";
+import React, { useRef, useEffect } from 'react';
+import WaveformData from 'waveform-data';
 
 function WaveformImg(props: { waveformData: WaveformData }) {
   const refWaveformCanvas = useRef<HTMLCanvasElement>(null);
@@ -14,7 +14,7 @@ function WaveformImg(props: { waveformData: WaveformData }) {
 
     const canvas = refWaveformCanvas.current!;
     if (canvas) {
-      const ctx = canvas.getContext("2d");
+      const ctx = canvas.getContext('2d');
       ctx?.beginPath();
 
       const channel = props.waveformData.channel(0);

@@ -1,10 +1,10 @@
-import React, { Fragment } from "react";
-import DefaultLayout from "./layouts/DefaultLayout";
-import { BrowserRouter, Route } from "react-router-dom";
+import React, { Fragment } from 'react';
+import DefaultLayout from './layouts/DefaultLayout';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-import Home from "./pages/Home";
+import Home from './pages/Home';
 
-import { InputAudioProvider } from "./store/inputAudio/inputAudioContext";
+import { InputAudioProvider } from './store/inputAudio/inputAudioContext';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <InputAudioProvider>
         <BrowserRouter>
           <DefaultLayout>
-            <Route path="/" exact key="Home" component={Home} />
+            <Route path='/' exact key='Home' component={Home} />
           </DefaultLayout>
         </BrowserRouter>
       </InputAudioProvider>
