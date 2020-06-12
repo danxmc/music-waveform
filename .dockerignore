@@ -3,6 +3,9 @@
 Dockerfile
 .dockerignore
 .gitignore
+.git
+docker-compose.yml
+docker
 README.md
 package-lock.json
 
