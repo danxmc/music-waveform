@@ -8,18 +8,24 @@ function AudioList() {
   // Global State
   const { inputAudioState } = useInputAudioState();
 
+  const audios = arrayFromFileList(inputAudioState.songs);
+
   return (
     <Fragment>
       <Typography variant='h6'>Audio List</Typography>
       <div>
-        {arrayFromFileList(inputAudioState.songs).map((song, index) => {
-          return (
-            <AudioListItem
-              key={`audioItem-${index}-${song.name}`}
-              song={song}
-            />
-          );
-        })}
+        {audios.length ? (
+          audios.map((song, index) => {
+            return (
+              <AudioListItem
+                key={`audioItem-${index}-${song.name}`}
+                song={song}
+              />
+            );
+          })
+        ) : (
+          <Typography>No audios yet</Typography>
+        )}
       </div>
     </Fragment>
   );

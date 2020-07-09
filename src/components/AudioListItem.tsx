@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import {
   Card,
   CardContent,
@@ -8,8 +8,8 @@ import {
   Button,
 } from '@material-ui/core';
 import { createWaveformData, getArrayBufferFromFile } from '../utilities';
-import WaveformData from 'waveform-data';
-import WaveformImg from './WaveformImg';
+import { JsonWaveformData } from 'peaks.js';
+import PeaksWaveform from './PeaksWaveform';
 
 const useStyles = makeStyles({
   title: {
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 function AudioListItem(props: { song: File }) {
   const classes = useStyles();
 
-  const [waveformData, setWaveformData] = useState<WaveformData>();
+  const [waveformData, setWaveformData] = useState<JsonWaveformData>();
 
   const handleGetWaveformData = async () => {
     // Convert File to Array Buffer
@@ -28,6 +28,8 @@ function AudioListItem(props: { song: File }) {
 
     // Convert Array Buffer to Waveform Data
     const audioWaveformData = await createWaveformData(audioArrayBuffer);
+
+    console.log(audioWaveformData);
 
     // Set state
     setWaveformData(audioWaveformData);
@@ -39,7 +41,12 @@ function AudioListItem(props: { song: File }) {
         <Typography className={classes.title} color='textPrimary'>
           {props.song.name}
         </Typography>
-        {waveformData ? <WaveformImg waveformData={waveformData} /> : null}
+        {waveformData ? (
+          <Fragment>
+            {/* <WaveformImg waveformData={waveformData} /> */}
+            <PeaksWaveform audio={props.song} waveformData={waveformData} />
+          </Fragment>
+        ) : null}
       </CardContent>
       <CardActions>
         <Button size='small' onClick={handleGetWaveformData}>

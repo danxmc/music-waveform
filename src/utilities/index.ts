@@ -1,14 +1,19 @@
+import { JsonWaveformData } from 'peaks.js';
 import WaveformData from 'waveform-data';
 
 function arrayFromFileList(list: FileList) {
   return Array.from(list);
 }
 
+function objectURLFromFile(file: File) {
+  return URL.createObjectURL(file);
+}
+
 async function createWaveformData(
   arrayBuffer: ArrayBuffer,
-): Promise<WaveformData> {
-  let waveformData = new Promise<WaveformData>((resolve) => {
-    resolve({} as WaveformData);
+): Promise<JsonWaveformData> {
+  let waveformData = new Promise<JsonWaveformData>((resolve) => {
+    resolve({} as JsonWaveformData);
   });
   const audioContext = new AudioContext();
   const options = {
@@ -17,12 +22,12 @@ async function createWaveformData(
     scale: 512,
   };
   try {
-    waveformData = new Promise<WaveformData>((resolve, reject) => {
+    waveformData = new Promise<JsonWaveformData>((resolve, reject) => {
       WaveformData.createFromAudio(options, (err, waveform) => {
         if (err) {
           reject(err);
         } else {
-          resolve(waveform);
+          resolve((waveform as unknown) as JsonWaveformData);
         }
       });
     });
@@ -67,4 +72,9 @@ async function getArrayBufferFromFile(file: File): Promise<ArrayBuffer> {
   return arrayBuffer;
 }
 
-export { arrayFromFileList, createWaveformData, getArrayBufferFromFile };
+export {
+  arrayFromFileList,
+  objectURLFromFile,
+  createWaveformData,
+  getArrayBufferFromFile,
+};
