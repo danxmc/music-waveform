@@ -6,9 +6,10 @@ import app from './app';
 /**
  * Normalize a port into a number, string, or false.
  */
-function normalizePort(val: string | number | undefined): number | string | boolean {
-  if(val) {
-
+function normalizePort(
+  val: string | number | undefined,
+): number | string | boolean {
+  if (val) {
     if (typeof val === 'string') {
       const port = parseInt(val, 10);
 
@@ -16,7 +17,7 @@ function normalizePort(val: string | number | undefined): number | string | bool
         // named pipe
         return val;
       }
-      
+
       if (port >= 0) {
         // port number
         return port;
@@ -29,24 +30,23 @@ function normalizePort(val: string | number | undefined): number | string | bool
     }
   }
   return false;
-
 }
 
 /**
-  * Get port from environment and store in Express.
-  */
+ * Get port from environment and store in Express.
+ */
 const port = normalizePort(process.env.PORT || 5000);
 app.set('port', port);
 
 /**
-  * Create HTTP server.
-  */
+ * Create HTTP server.
+ */
 
 const server = http.createServer(app);
 
 /**
-  * Event listener for HTTP server "error" event.
-  */
+ * Event listener for HTTP server "error" event.
+ */
 
 function onError(error: NodeJS.ErrnoException): void {
   if (error.syscall !== 'listen') {
@@ -71,19 +71,19 @@ function onError(error: NodeJS.ErrnoException): void {
 }
 
 /**
-  * Event listener for HTTP server "listening" event.
-  */
+ * Event listener for HTTP server "listening" event.
+ */
 
 function onListening(): void {
   const addr = server.address();
-  const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr!.port}`;
+  const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr?.port}`;
 
   logger.info(`Listening on ${bind}`);
 }
 
 /**
-  * Listen on provided port, on all network interfaces.
-  */
+ * Listen on provided port, on all network interfaces.
+ */
 
 server.listen(port);
 server.on('error', onError);

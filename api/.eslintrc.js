@@ -14,17 +14,20 @@ module.exports = {
     browser: false,
   },
   extends: [
-    'plugin:import/typescript', // required to get the resolver aliases right
+    'plugin:import/typescript',
     'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
     'prettier/@typescript-eslint', // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
     'plugin:prettier/recommended', // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
+  ],
+  plugins: [
+    'import', // required to get the resolver aliases right
   ],
   rules: {
     // Named exports are more explicit and make things slightly simpler with Typescript
     'import/prefer-default-export': 'off',
 
     'import/extensions': [
-      'warning',
+      'warn',
       'ignorePackages',
       {
         js: 'never',

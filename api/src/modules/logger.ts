@@ -13,14 +13,13 @@ envLevels.set('test', LOG_LEVELS.INFO);
 const envLevel = process.env.NODE_ENV || LOG_LEVELS.INFO;
 
 const level = process.env.LOG_LEVEL || envLevel;
-const format = process.env.NODE_ENV === 'production'
-  ? winston.format.json()
-  : winston.format.simple();
+const format =
+  process.env.NODE_ENV === 'production'
+    ? winston.format.json()
+    : winston.format.simple();
 const logger = winston.createLogger({
   format,
-  transports: [
-    new winston.transports.Console({ level }),
-  ],
+  transports: [new winston.transports.Console({ level })],
 });
 
 export default logger;
