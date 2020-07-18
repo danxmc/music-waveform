@@ -1,4 +1,5 @@
-import { Cluster, N1qlQuery } from 'couchbase';
+import { Cluster } from 'couchbase';
+import { promisify } from 'util';
 
 import {
   COUCHBASE_URL,
@@ -15,6 +16,12 @@ const connectionString = COUCHBASE_URL2
   : `${COUCHBASE_URL}:${COUCHBASE_PORT}`;
 
 export const cluster = new Cluster(connectionString);
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-cluster.authenticate(COUCHBASE_USER!, COUCHBASE_PASSWORD!);
+cluster.authenticate(COUCHBASE_USER || '', COUCHBASE_PASSWORD || '');
 export const bucket = cluster.openBucket(COUCHBASE_MAIN_BUCKET);
+
+export const queryAsync = promisify(bucket.query).bind(bucket);
+export const insertAsync = promisify(bucket.insert);
+export const replaceASync = promisify(bucket.replace);
+export const upsertAsync = promisify(bucket.upsert);
+export const getAsync = promisify(bucket.get);
+export const getMultiASync = promisify(bucket.getMulti);
