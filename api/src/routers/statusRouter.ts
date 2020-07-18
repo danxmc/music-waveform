@@ -2,6 +2,9 @@
  * Status endpoints, used for monitoring and debugging purposes.
  */
 import PromiseRouter from 'express-promise-router';
+import { N1qlQuery } from 'couchbase';
+import logger from '../modules/logger';
+import { bucket } from '../config/couchbase';
 
 const router = PromiseRouter();
 
@@ -21,7 +24,7 @@ const router = PromiseRouter();
  *         description: The API is online.
  */
 router.get('/always-ok', (req, res) => {
-  res.json({ message: 'ok' });
+  res.status(200).json({ message: 'ok' });
 });
 
 /**
@@ -31,16 +34,20 @@ router.get('/always-ok', (req, res) => {
  *     tags:
  *       - Misc
  *     summary: >
- *       Returns specific environment information: the version and
- *       the environment
+ *       Returns a HTTP 200 OK response if the API can connect to the CouchDB Cluster
  *     responses:
  *       "200":
- *         description: The environment and version of this API.
+ *         description: THe CouchDB Cluster is reachable.
  */
-router.get('/akido-mode', (req, res) => {
-  res.json({
-    environment: process.env.SENTRY_ENVIRONMENT || 'local',
-    version: process.env.CALVER || process.env.SENTRY_VERSION || 'unavailable',
+router.get('/couchbase', async (req, res) => {
+  const dbQuery = 'SELECT 1';
+  bucket.query(N1qlQuery.fromString(dbQuery), (err, queryRes) => {
+    if (err) {
+      logger.error(err);
+    }
+    if (queryRes?.length) {
+      res.status(200).json({ message: 'ok' });
+    }
   });
 });
 

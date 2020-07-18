@@ -13,3 +13,18 @@ export const AUTHORIZATION_SHARED_SECRET =
 export const ENABLE_SWAGGER_DOCS = process.env.ENABLE_SWAGGER_DOCS === 'true';
 
 export const IS_PROD = process.env.NODE_ENV === 'production';
+
+// Couchbase configuration
+export const {
+  // Couchbase cluster can be multiple nodes
+  COUCHBASE_URL,
+  COUCHBASE_URL2,
+  COUCHBASE_URL3,
+
+  COUCHBASE_PORT,
+
+  COUCHBASE_USER,
+  COUCHBASE_PASSWORD,
+
+  COUCHBASE_MAIN_BUCKET,
+} = process.env;
