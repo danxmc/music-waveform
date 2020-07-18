@@ -1,7 +1,7 @@
 import swaggerUi from 'swagger-ui-express';
 import PromiseRouter from 'express-promise-router';
 
-import swaggerDocument from 'modules/swagger';
+import swaggerDocument from '../modules/swagger';
 
 const router = PromiseRouter();
 
