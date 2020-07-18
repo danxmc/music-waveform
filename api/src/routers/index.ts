@@ -1,6 +1,6 @@
 import PromiseRouter from 'express-promise-router';
 
-import { ENABLE_SWAGGER_DOCS } from '../config/config';
+import { ENABLE_SWAGGER_DOCS } from '../config/common';
 
 import statusRouter from './statusRouter';
 import audioRouter from './audioRouter';
